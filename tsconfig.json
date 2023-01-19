@@ -16,7 +16,12 @@
     },
     "lib": ["esnext", "dom", "dom.iterable"],
     "sourceMap": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   },
   "exclude": ["node_modules", "build"],
   "include": ["./src", "webpack.config.ts", "./scss.d.ts"]
