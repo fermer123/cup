@@ -1,33 +1,24 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC} from 'react';
 import style from './App.module.scss';
+import Column from './components/Column/Column';
 
 const App: FC = () => {
-  const [firstFetchData, setFirstFetchData] = useState('');
-
-  const fetchData = async () => {
-    const response = await fetch('http://localhost:3000/api/v1/first/poll');
-    console.log(response);
-    if (response.status === 502) {
-      await fetchData();
-    } else if (response.status !== 200) {
-      console.log(response.statusText);
-      const promise = new Promise<void>((resolve) => {
-        setTimeout(() => {
-          resolve();
-        }, 5000);
-      });
-      await promise;
-      await fetchData();
-    } else {
-      setFirstFetchData(await response.json());
-      await fetchData();
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return <div>qwe</div>;
+  return (
+    <div className={style.table}>
+      <ul className={style.table_list}>
+        <li className={style.table_list_item}>pair name/market</li>
+        <li className={style.table_list_item}>rub/cupcake</li>
+        <li className={style.table_list_item}>usd/cupcake</li>
+        <li className={style.table_list_item}>eur/cupcake</li>
+        <li className={style.table_list_item}>rub/usd</li>
+        <li className={style.table_list_item}>rub/eur</li>
+        <li className={style.table_list_item}>eur/usd</li>
+      </ul>
+      <Column url='http://localhost:3000/api/v1/first/poll' title='first' />
+      <Column url='' title='second' />
+      <Column url='' title='third' />
+    </div>
+  );
 };
 
 export default App;

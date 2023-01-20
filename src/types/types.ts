@@ -3,7 +3,7 @@ interface Irates {
   USD: number;
   EUR: number;
 }
-export interface IFetchData {
+export default interface IFetchData {
   rates: Irates;
   base: string;
   timestamp: string;
