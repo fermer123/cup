@@ -1,12 +1,11 @@
 import {useEffect, useState} from 'react';
 import IFetchData from '@src/types/types';
 
-const UseFetchData = (url) => {
+const UseFetchData = (url: string) => {
   const [data, setData] = useState<IFetchData | null>(null);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(url);
-      console.log(response);
       if (response.status === 502) {
         await fetchData();
       } else if (response.status !== 200) {
@@ -25,8 +24,7 @@ const UseFetchData = (url) => {
       }
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data, url]);
 
   return {
     data,

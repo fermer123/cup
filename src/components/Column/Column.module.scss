@@ -1,16 +1,13 @@
 .table_list {
-  text-transform: uppercase;
   .table_list_item {
+    padding: 0 15px;
     height: 40px;
     border: 1px solid rgba(100, 99, 99, 0.474);
     display: flex;
     justify-content: left;
     align-items: center;
-    &:first-child {
-      text-transform: lowercase;
-      &::first-letter {
-        text-transform: uppercase;
-      }
-    }
   }
+}
+.table_list_item_active {
+  background-color: rgb(61, 61, 182);
 }
