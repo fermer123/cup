@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import IFetchData from '@src/types/types';
+import {IFetchData, TUrl} from '@src/types/types';
 
-const UseFetchData = (url: string) => {
+const UseFetchData = (url: TUrl) => {
   const [data, setData] = useState<IFetchData | null>(null);
   useEffect(() => {
     const fetchData = async () => {

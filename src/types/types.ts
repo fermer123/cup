@@ -9,7 +9,7 @@ export interface IFetchData {
   timestamp: string;
   date: Date;
 }
-export enum Ititle {
+export enum Etitle {
   First = 'First',
   Second = 'Second',
   Third = 'Third',
@@ -24,3 +24,10 @@ export interface IData<T> {
   title: string[];
   id: T;
 }
+
+enum EData {
+  'http://localhost:3000/api/v1/first/poll',
+  'http://localhost:3000/api/v1/second/poll',
+  'http://localhost:3000/api/v1/third/poll',
+}
+export type TUrl = keyof typeof EData;

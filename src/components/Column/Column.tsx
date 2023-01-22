@@ -1,4 +1,4 @@
-import {IData, Ititle} from '@src/types/types';
+import {IData} from '@src/types/types';
 import React, {FC} from 'react';
 import style from './Column.module.scss';
 

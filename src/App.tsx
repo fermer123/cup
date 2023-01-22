@@ -4,7 +4,7 @@ import React, {FC} from 'react';
 import style from './App.module.scss';
 import Column from './components/Column/Column';
 import UseFetchData from './fetchingData/UseFetchData';
-import {IData, Irates, Ititle} from './types/types';
+import {IData, Irates, Etitle} from './types/types';
 
 const App: FC = () => {
   const ColumnFirst = UseFetchData('http://localhost:3000/api/v1/first/poll');
@@ -19,7 +19,7 @@ const App: FC = () => {
     rubEUR: [],
     eurUSD: [],
     id: [],
-    title: [Ititle.First, Ititle.Second, Ititle.Third],
+    title: [Etitle.First, Etitle.Second, Etitle.Third],
   };
 
   const maxValue = (...arg: Irates[]) => {
