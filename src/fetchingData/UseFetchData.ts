@@ -3,7 +3,6 @@ import {IFetchData, TUrl} from '@src/types/types';
 
 const useFetchData = (url: TUrl) => {
   const [data, setData] = useState<IFetchData | null>(null);
-
   const fetchData = async () => {
     const response = await fetch(url);
     if (response.status === 502) {
@@ -20,7 +19,7 @@ const useFetchData = (url: TUrl) => {
 
   useEffect(() => {
     fetchData();
-  }, [data, url]);
+  }, [url]);
 
   return {
     data,
