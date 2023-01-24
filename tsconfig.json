@@ -5,7 +5,7 @@
     "target": "ESNext",
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     "baseUrl": ".",
     "esModuleInterop": true,
@@ -24,5 +24,5 @@
     ]
   },
   "exclude": ["node_modules", "build"],
-  "include": ["./src", "webpack.config.ts", "./scss.d.ts"]
+  "include": ["./src", "webpack.config.ts", "./scss.d.ts", "jest.config.ts"]
 }
