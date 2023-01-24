@@ -3,13 +3,13 @@
 import React, {FC} from 'react';
 import style from './App.module.scss';
 import Column from './components/Column/Column';
-import UseFetchData from './fetchingData/UseFetchData';
+import useFetchData from './fetchingData/useFetchData';
 import {IData, Irates, Etitle} from './types/types';
 
 const App: FC = () => {
-  const ColumnFirst = UseFetchData('http://localhost:3000/api/v1/first/poll');
-  const ColumnSecond = UseFetchData('http://localhost:3000/api/v1/second/poll');
-  const ColumnThird = UseFetchData('http://localhost:3000/api/v1/third/poll');
+  const columnFirst = useFetchData('http://localhost:3000/api/v1/first/poll');
+  const columnSecond = useFetchData('http://localhost:3000/api/v1/second/poll');
+  const columnThird = useFetchData('http://localhost:3000/api/v1/third/poll');
 
   const data: IData<number[]> = {
     rubCake: [],
@@ -22,7 +22,7 @@ const App: FC = () => {
     title: [Etitle.First, Etitle.Second, Etitle.Third],
   };
 
-  const maxValue = (...arg: Irates[]) => {
+  const dataHandler = (...arg: Irates[]) => {
     if (arg[0] && arg[1]) {
       // eslint-disable-next-line array-callback-return
       arg.map((url: Irates, idx) => {
@@ -38,10 +38,10 @@ const App: FC = () => {
     return data;
   };
 
-  maxValue(
-    ColumnFirst.data?.rates,
-    ColumnThird.data?.rates,
-    ColumnSecond.data?.rates,
+  dataHandler(
+    columnFirst.data?.rates,
+    columnThird.data?.rates,
+    columnSecond.data?.rates,
   );
 
   return (

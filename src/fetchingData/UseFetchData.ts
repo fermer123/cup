@@ -1,28 +1,24 @@
 import {useEffect, useState} from 'react';
 import {IFetchData, TUrl} from '@src/types/types';
 
-const UseFetchData = (url: TUrl) => {
+const useFetchData = (url: TUrl) => {
   const [data, setData] = useState<IFetchData | null>(null);
+
+  const fetchData = async () => {
+    const response = await fetch(url);
+    if (response.status === 502) {
+      await fetchData();
+    } else if (response.status !== 200) {
+      setTimeout(() => {
+        fetchData();
+      }, 5000);
+    } else {
+      setData(await response.json());
+      await fetchData();
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(url);
-      if (response.status === 502) {
-        await fetchData();
-      } else if (response.status !== 200) {
-        // eslint-disable-next-line no-console
-        console.log(response.statusText);
-        const promise = new Promise<void>((resolve) => {
-          setTimeout(() => {
-            resolve();
-          }, 5000);
-        });
-        await promise;
-        await fetchData();
-      } else {
-        setData(await response.json());
-        await fetchData();
-      }
-    };
     fetchData();
   }, [data, url]);
 
@@ -31,4 +27,4 @@ const UseFetchData = (url: TUrl) => {
   };
 };
 
-export default UseFetchData;
+export default useFetchData;
