@@ -1,5 +1,5 @@
 import {IData} from '@src/types/types';
-import React, {FC} from 'react';
+import {FC} from 'react';
 import style from './Column.module.scss';
 
 const Column: FC<IData<number>> = ({

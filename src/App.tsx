@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, {FC, useCallback, useMemo, useState} from 'react';
+import {FC, useCallback, useMemo, useState} from 'react';
 import style from './App.module.scss';
 import Column from './components/Column/Column';
 import useFetchData from './fetchingData/useFetchData';

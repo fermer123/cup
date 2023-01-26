@@ -35,6 +35,8 @@
   },
   "plugins": ["react", "@typescript-eslint", "jest"],
   "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "react/jsx-filename-extension": [1, {"extensions": [".tsx", ".ts"]}],
