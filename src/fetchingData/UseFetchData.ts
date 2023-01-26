@@ -19,7 +19,8 @@ const useFetchData = (url: TUrl) => {
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     data,
