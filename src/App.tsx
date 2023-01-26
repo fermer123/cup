@@ -54,7 +54,6 @@ const App: FC = () => {
     columnSecond.data?.rates,
     columnThird.data?.rates,
   ]);
-  console.log(data);
 
   return (
     <div className={style.table}>
