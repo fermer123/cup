@@ -21,7 +21,7 @@ export interface IData<T> {
   rubUsd: number[];
   rubEUR: number[];
   eurUSD: number[];
-  title: string[];
+  title?: string[];
   id: T;
 }
 
