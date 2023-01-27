@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import {FC, useCallback, useMemo, useState} from 'react';
+import {FC, useMemo, useState} from 'react';
 import style from './App.module.scss';
 import Column from './components/Column/Column';
+
 import useFetchData from './fetchingData/useFetchData';
 import {IData, Irates, Etitle} from './types/types';
 
@@ -20,10 +21,6 @@ const App: FC = () => {
     title: [Etitle.First, Etitle.Second, Etitle.Third],
   });
 
-  const DataCallBack = useCallback((dataValue: IData<number[]>) => {
-    setData(dataValue);
-  }, []);
-
   const dataHandler = (...arg: Irates[]) => {
     if (arg[0] && arg[1] && arg[2]) {
       // eslint-disable-next-line array-callback-return, no-return-assign
@@ -37,11 +34,11 @@ const App: FC = () => {
         rubEUR: [(data.rubEUR[idx] = Number((url.RUB / url.EUR).toFixed(2)))],
         eurUSD: [(data.eurUSD[idx] = Number((url.EUR / url.USD).toFixed(2)))],
       }));
-      DataCallBack(data);
+      setData(data);
     }
   };
 
-  const memo = useMemo(() => {
+  useMemo(() => {
     dataHandler(
       columnFirst.data?.rates,
       columnThird.data?.rates,
